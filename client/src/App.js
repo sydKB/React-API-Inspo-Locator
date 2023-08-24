@@ -1,24 +1,62 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Homepage from './components/Homepage/Homepage';
+import Login from './components/Login/Login';
+import Maps from './components/Maps/Maps';
+import Profile from './components/Profile/Profile';
+import Search from './components/Search/Search';
+
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ApolloProvider client={client}>
+        <BrowserRouter basename='/'>
+            <Header />
+
+            <Routes>
+              <Route 
+                path="/" 
+                element={<Homepage />}
+              />
+              <Route 
+                path="/search" 
+                element={<Search />}
+              />
+              <Route 
+                path="/maps" 
+                element={<Maps />}
+              />
+              <Route 
+                path="/login" 
+                element={<Login />}
+              />
+              <Route 
+                path="/profile" 
+                element={<Profile />}
+              />
+              <Route 
+                path="/tips" 
+                element={<Tips />}
+              />
+              <Route 
+                path="*"
+                element={<Homepage />}
+              />
+            </Routes>
+
+            <Footer />
+        </BrowserRouter>
+      </ApolloProvider>
+    </>
   );
 }
 
