@@ -1,53 +1,72 @@
-// import React from 'react';
-// import { Outlet, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
 
-// function Login() {
-//     return (
-//         <div className="signup">
-//             <h2>Sign Up</h2>
-//             <form class="form signup-form">
-//                 <div>
-//                     <label for="name-signup">name:</label>
-//                     <input type="text" id="name-signup" />
-//                 </div>
-//                 <div>
-//                     <label for="email-signup">email:</label>
-//                     <input type="text" id="email-signup" />
-//                 </div>
-//                 <div>
-//                     <label for="password-signup">password:</label>
-//                     <input type="password" id="password-signup" />
-//                 </div>
-//                 <div>
-//                     <Link to="/"> 
-//                         <button class="profile-btn" type="submit">Sign Up</button>
-//                     </Link>
-//                 </div>
-//             </form>
-//         </div>
+import Auth from '../../utils/auth';
+
+const Login = (props) => {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
+  };
+
+    return (
+        <section>
+
+        <div className="login">
+            <h2>Log in</h2>
+            <form class="form login-form" onSubmit={handleFormSubmit}>
+                <div>
+                    <label for="email-login">email:</label>
+                    <input class="form-input" type="text" id="email-login"  name="email"  onChange={handleChange}/>
+                </div>
+                <div>
+                    <label for="password-login">password:</label>
+                    <input class="form-input" type="password" id="password-login" name="password" onChange={handleChange}/>
+                </div>
+                <div>
+                    <button type="submit">Log In</button>
+                    <Link to="/signup"> 
+                    <button class="profile-btn" type="submit">Sign Up</button>
+                </Link>
+                    <p class="log-again"> </p>
+                </div>
+            </form>
+        </div>
+        <Outlet />
+        </section>
+    );   
+}
 
 
-
-//         <div className="login">
-//             <h2>Log in</h2>
-//             <form class="form login-form">
-//                 <div>
-//                     <label for="email-login">email:</label>
-//                     <input class="form-input" type="text" id="email-login" />
-//                 </div>
-//                 <div>
-//                     <label for="password-login">password:</label>
-//                     <input class="form-input" type="password" id="password-login" />
-//                 </div>
-//                 <div>
-//                     <button type="submit">Log In</button>
-//                     <button class="sign-btn" type="submit">Sign up</button>
-//                     <p class="log-again"> </p>
-//                 </div>
-//             </form>
-//         </div>
-//     );   
-// }
-
-
-// export default Login;
+export default Login;
