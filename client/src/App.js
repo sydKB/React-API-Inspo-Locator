@@ -1,6 +1,8 @@
-import './App.css';
+// import './App.css';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -10,11 +12,12 @@ import Maps from './components/Maps/Maps';
 import Profile from './components/Profile/Profile';
 import Search from './components/Search/Search';
 import Tips from './components/Tips/Tips';
+import Signup from './components/Signup/Signup';
 
-const client = new ApolloClient({
+const httpLink = createHttpLink({
   uri: '/graphql',
-  cache: new InMemoryCache(),
 });
+
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
@@ -26,10 +29,15 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+const client = new ApolloClient({
+  uri: '/graphql',
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 function App() {
   return (
     <>
-    <h1>sup</h1>
       <ApolloProvider client={client}>
         <BrowserRouter basename='/'>
             <Header />
@@ -58,6 +66,10 @@ function App() {
               <Route 
                 path="/tips" 
                 element={<Tips />}
+              />
+              <Route 
+                path="/signup" 
+                element={<Signup />}
               />
               <Route 
                 path="*"

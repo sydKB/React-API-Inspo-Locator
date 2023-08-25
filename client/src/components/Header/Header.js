@@ -3,7 +3,7 @@ import { Outlet, Link } from 'react-router-dom';
 
 function Header() {
     return(
-        <Header>
+        <header>
             <div>
                 <Link to="/"> LineWork </Link>
             </div>
@@ -20,7 +20,8 @@ function Header() {
                     </Link>
                 </nav>
             </div>
-        </Header>
+            <Outlet />
+        </header>
     );
 }
 
