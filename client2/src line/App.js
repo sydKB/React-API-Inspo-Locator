@@ -16,21 +16,11 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
-
 function App() {
   return (
     <>
     <h1>sup</h1>
-      <ApolloProvider client={client}>
+      {/* <ApolloProvider client={client}>
         <BrowserRouter basename='/'>
             <Header />
 
@@ -67,7 +57,7 @@ function App() {
 
             <Footer />
         </BrowserRouter>
-      </ApolloProvider>
+      </ApolloProvider> */}
     </>
   );
 }
