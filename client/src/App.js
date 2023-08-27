@@ -10,7 +10,7 @@ import Homepage from './components/Homepage/Homepage';
 import Login from './components/Login/Login';
 import Maps from './components/Maps/Maps';
 import Profile from './components/Profile/Profile';
-import Search from './components/Search/Search';
+import Search from './components/Inspo/Inspo';
 import Tips from './components/Tips/Tips';
 import Signup from './components/Signup/Signup';
 
