@@ -10,7 +10,7 @@ import Homepage from './components/Homepage/Homepage';
 import Login from './components/Login/Login';
 import Maps from './components/Maps/Maps';
 import Profile from './components/Profile/Profile';
-import Search from './components/Inspo/Inspo';
+import Inspo from './components/Inspo/Inspo';
 import Tips from './components/Tips/Tips';
 import Signup from './components/Signup/Signup';
 
@@ -48,8 +48,8 @@ function App() {
                 element={<Homepage />}
               />
               <Route 
-                path="/search" 
-                element={<Search />}
+                path="/inspo-search" 
+                element={<Inspo />}
               />
               <Route 
                 path="/maps" 
