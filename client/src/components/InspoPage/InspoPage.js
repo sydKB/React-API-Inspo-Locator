@@ -1,7 +1,7 @@
 import React from 'react';
 import InspoSearch from '../InspoSearch/InspoSearch';
 
-function Inspo() {
+function InspoPage() {
     return(
         <section>
             <div>
@@ -12,4 +12,4 @@ function Inspo() {
     );
 }
 
-export default Inspo;
+export default InspoPage;
