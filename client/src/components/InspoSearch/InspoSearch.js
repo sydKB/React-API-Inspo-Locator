@@ -1,3 +1,7 @@
+import React, {useState, useEffect} from 'react';
+import axios from 'axios'; 
+import List from '../Images/Images'; 
+
 function InspoSearch() {
     const [images, setImages] = useState([])
     const [search, setSearch] = useState('')
