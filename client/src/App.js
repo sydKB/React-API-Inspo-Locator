@@ -8,7 +8,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Homepage from './components/Homepage/Homepage';
 import Login from './components/Login/Login';
-import Maps from './components/Maps/Maps';
+import MapPage from './components/MapPage/MapPage';
 import Profile from './components/Profile/Profile';
 import InspoPage from './components/InspoPage/InspoPage';
 import Tips from './components/Tips/Tips';
@@ -52,8 +52,8 @@ function App() {
                 element={<InspoPage />}
               />
               <Route 
-                path="/maps" 
-                element={<Maps />}
+                path="/map" 
+                element={<MapPage />}
               />
               <Route 
                 path="/login" 
