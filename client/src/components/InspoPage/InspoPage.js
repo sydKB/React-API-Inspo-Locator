@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Unsplash, { toJson } from "unsplash-js";
-// import "./InspoPage.css"
+import "./InspoPage.css"
 const unsplash = new Unsplash({
     accessKey: "6oz3qu2mhIv2G9RzuK4p8szkUVdc4G_pdTk9p6EZuBo",
   });
@@ -20,16 +20,16 @@ export default function InspoPage() {
       };
   return (
     <>
+    <div className="back">
       <form className="form" onSubmit={searchPhotos}>
         <label className="label" htmlFor="query">
           {" "}
-          :camera:
         </label>
         <input
           type="text"
           name="query"
           className="input"
-          placeholder={`Try "dog" or "apple"`}
+          placeholder={`Search for inspiration"`}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -64,6 +64,7 @@ export default function InspoPage() {
          </div>
          </div>
           )}
+        </div>
         </div>
      </>
   );
