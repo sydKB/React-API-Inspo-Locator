@@ -1,10 +1,11 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import "./Tips.css"
 
 function Tips() {
     return(
-        <section>
-            <h2>The Needle Drop</h2>
+        <section className='tips'>
+            <h2 className='tipstitle'>The Needle Drop</h2>
             <h3>Tattoo Styles</h3>
             <ul>
                 <li>Traditional</li>
@@ -60,6 +61,7 @@ function Tips() {
                 </p>
             </ul>
             <h3>Etiquette</h3>
+            <ul>
                 <li>Communication</li>
                 <p>
                 Different artists communicate differently both in setting up an appointment and tattoo design. Some artists will only tattoo "Flash" which is imagery they have designed and have ready to go. Some artists will only tattoo a specific design once, whereas others will repeat one of their designs. Other artists will do custom work or even specialize with reproduction of other work from a tattoo or non tattoo medium. If there is an artist you like try to determine that what you want is what they also like to do, and have the appropriate amount of information for them so they don’t need to ask every single questions they might have. How big do you want it, where do you want it, what is your time availability, do you have other tattoos, and maybe what your budget in are often preliminary information that will help your artist get you on their list. Some artists have long waitlists lasting months or even years so patience is key. Most artists communicate themselves so often long periods of non communication are common as they don’t always stay on top of emails.     
@@ -72,6 +74,7 @@ function Tips() {
                 <p>
                 Treat tipping like you would at a nice restaurant. 15-20% is a normal amount, but also you could just do a flat amount based on how much time you spent, how much money you spent, or how good you felt about the experience. If you plan on getting tattooed out of the US then its worth using google to search for specific local tipping customs although tattoos can buck local trends.     
                 </p>
+             </ul>
         </section>
     );
 }
