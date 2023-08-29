@@ -1,0 +1,40 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: grey;
+}
+
+.titleheader {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0;
+  color: black;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center; /* Align vertically in the center */
+}
+
+.nav a,
+.login-button {
+  text-decoration: none;
+  color: black;
+  font-size: 20px; /* Set font size to match button */
+  padding: 0.5rem 1rem;
+}
+
+.login-button {
+  border: none;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: grey;
+}

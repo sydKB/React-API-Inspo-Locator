@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "unsplash": "^4.2.0",
-    "unsplash-js": "^6.0.0"
+    "unsplash-js": "^6.0.0",
+    "@react-google-maps/api": "^2.19.2"
   }
 }

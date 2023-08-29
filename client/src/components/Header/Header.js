@@ -1,20 +1,21 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import "./Header.css"
 
 function Header() {
     return(
         <header>
-            <div>
+            <div className='titleheader'>
                 <Link to="/"> LineWork </Link>
             </div>
 
             <div>
-                <nav>
+                <nav className='nav'>
                     <Link to="/search"> Search </Link>
-                    <Link to="/maps"> Maps </Link>
+                    <Link to="/map"> Maps </Link>
                     <Link to="/profile"> Profile </Link>
                     <Link to="/login"> 
-                        <button className="btn btn-lg btn-danger">
+                        <button className="login-button">
                             Login
                         </button>
                     </Link>

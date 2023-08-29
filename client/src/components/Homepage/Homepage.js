@@ -1,19 +1,21 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-
+import "./Homepage.css"
 function Homepage() {
     return(
-        <section>
-            <h2>LineWork</h2>
+        <section className='homepage'>
+            <h2 className='title'>LineWork</h2>
+            <div className='buttons-container'>
             <Link to="/search"> 
-                <button className="">Search for inspiration</button>
+                <button className="buttons">Search for inspiration</button>
             </Link>
-            <Link to="/maps"> 
-                <button className="">Look for shops nearby</button>
+            <Link to="/map"> 
+                <button className="buttons">Look for shops nearby</button>
             </Link>
             <Link to="/profile"> 
-                <button className="">Profile</button>
+                <button className="buttons">Profile</button>
             </Link>
+            </div>
             <Outlet />
         </section>
     );

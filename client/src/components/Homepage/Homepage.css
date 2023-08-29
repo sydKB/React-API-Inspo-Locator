@@ -1,0 +1,40 @@
+.homepage {
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    align-items: center;
+    height: 87vh; 
+    background-image: url('https://m.media-amazon.com/images/I/91fm+hvqX1L.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .title {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .buttons {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .buttons:hover {
+    background-color: #c82333;
+  }
