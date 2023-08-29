@@ -1,4 +1,3 @@
-const Photos = require('./Photos');
-const Map = require('./Map');
+const User = require('./User');
 
-module.exports = { Photos, Map };
+module.exports = { User };

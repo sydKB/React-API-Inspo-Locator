@@ -12,7 +12,7 @@ const Signup = () => {
     email: '',
     password: '',
   });
-  const [addUser, { error, data }] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -28,10 +28,11 @@ const Signup = () => {
     console.log(formState);
 
     try {
+      console.log(formState)
       const { data } = await addUser({
         variables: { ...formState },
       });
-
+    console.log(data)
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
@@ -56,13 +57,10 @@ return (
                 <input class="form-input" type="password" id="password-signup" name="password" onChange={handleChange}/>
             </div>
             <div>
-                <Link to="/"> 
                     <button class="profile-btn" type="submit">Sign Up</button>
-                </Link>
             </div>
         </form>
     </div>
-    <Outlet />
     </section>
       );
     };
