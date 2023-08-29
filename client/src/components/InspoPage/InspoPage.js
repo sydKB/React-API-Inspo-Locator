@@ -19,7 +19,6 @@ export default function InspoPage() {
         console.log("Submitting the Form")
       };
   return (
-    <>
     <div className="back">
       <form className="form" onSubmit={searchPhotos}>
         <label className="label" htmlFor="query">
@@ -37,35 +36,35 @@ export default function InspoPage() {
           Search
         </button>
       </form>
+      
       <div className="card-list">
         {pics.map((pic) =>
-        <div className="card" key={pic.id}>
-            <img
-                className="card--image"
-                alt={pic.alt_description}
-                src={pic.urls.full}
-                width="50%"
-                height="50%"
-                onClick={() => {
-                    window.open(pic.urls.full, '_blank');
-                  }}
-            ></img>
-         <div className="card--user">
-            <img
-                className="card--user-image"
-                src= {pic.user.profile_image.small}
-                alt= {pic.user.name}
-            >
-            </img>
-            <div className="card--user-details">
-                <span className="card--user-name"> {pic.user.name}</span>
-                <span className="card--likes"> Likes: {pic.likes}</span>
+          <div className="card" key={pic.id}>
+              <img
+                  className="card--image"
+                  alt={pic.alt_description}
+                  src={pic.urls.full}
+                  width="50%"
+                  height="50%"
+                  onClick={() => {
+                      window.open(pic.urls.full, '_blank');
+                    }}
+              ></img>
+            <div className="card--user">
+              <img
+                  className="card--user-image"
+                  src= {pic.user.profile_image.small}
+                  alt= {pic.user.name}
+              >
+              </img>
+              <div className="card--user-details">
+                  <span className="card--user-name"> {pic.user.name}</span>
+                  <span className="card--likes"> Likes: {pic.likes}</span>
+              </div>
             </div>
-         </div>
-         </div>
-          )}
-        </div>
-        </div>
-     </>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
