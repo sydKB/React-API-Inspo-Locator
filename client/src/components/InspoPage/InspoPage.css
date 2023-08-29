@@ -6,8 +6,10 @@
 .back {
   background-image: url('https://m.media-amazon.com/images/I/91fm+hvqX1L.jpg');
   background-size: cover;
-  background-position: center;
-  height: 100vh; /* Set background to cover viewport height */
+  background-position: top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  /* height: 100vh; */
 }
 
 .container {
@@ -60,23 +62,53 @@
 } */
 
 .card-list {
-  column-count: 2;
-}
-.card {
-  margin-bottom: 1rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
 }
+
+.card {
+  width: 20%;
+  margin: 5px;
+  background-color: lightgrey;
+  border-radius: 20px;
+  /* display: flex;
+  flex-wrap: wrap;
+  width: 250px;
+  padding: 10px; */
+}
+
 .card--image {
-  flex: 100%;
+  /* flex: 100%;
   margin-top: 1rem;
-  border-radius: 10px;
+  border-radius: 10px; */
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
 }
+
+.card--user {
+  margin-left: 10px;
+}
+
 .card--user-image {
   border-radius: 20px;
   margin-top: 5px;
 }
+
 .card--user-details {
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .card-list {
+      justify-content: flex-start; /* Stacking cards vertically */
+  }
+
+  .card {
+      flex-basis: 50%;
+  }
 }
