@@ -23,6 +23,9 @@ const resolvers = {
     addUser: async (parent, { username, email, password }) => {
       console.log('email', email)
       const user = await User.create({ username, email, password });
+      if (!user) {
+        throw new AuthenticationError('Not a valid email address');
+      }
       const token = signToken(user);
       return { token, user };
     },

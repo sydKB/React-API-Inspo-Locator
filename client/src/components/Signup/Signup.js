@@ -6,6 +6,8 @@ import Auth from "../../utils/auth";
 import './Signup.css'
 
 const Signup = () => {
+  const isvalidemail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+  const [validateEl, setValidateEl] = useState(false)
   const [formState, setFormState] = useState({
     username: "",
     email: "",
@@ -20,6 +22,10 @@ const Signup = () => {
     });
   };
   const handleFormSubmit = async (event) => {
+    if (formState.email.match(isvalidemail) === false) {
+      setValidateEl(true)
+      console.log("validate", validateEl)
+    }
     event.preventDefault();
     console.log(formState);
     try {
@@ -64,6 +70,7 @@ const Signup = () => {
                 name="email"
                 onChange={handleChange}
               />
+           
             </div>
             <div>
               <label for="password-signup">password:</label>
@@ -83,7 +90,13 @@ const Signup = () => {
           </form>
         </div>
       )}
+         {validateEl && (
+          <div>
+            must be a valid email
+          </div>
+        )} 
     </section>
+
   );
 };
 export default Signup;
