@@ -31,7 +31,8 @@ export default function InspoPage() {
   };
 
   useEffect(() => {
-    const savedPhotosFromStorage = JSON.parse(localStorage.getItem("savedPhotos")) || [];
+    const savedPhotosFromStorage =
+      JSON.parse(localStorage.getItem("savedPhotos")) || [];
     setSavedPhotos(savedPhotosFromStorage);
   }, []);
   return (
@@ -56,8 +57,23 @@ export default function InspoPage() {
               className="card--image"
               alt={pic.alt_description}
               src={pic.urls.full}
-              onClick={() => window.open(pic.urls.full, "_blank")}
-            />
+              width="50%"
+              height="50%"
+              onClick={() => {
+                window.open(pic.urls.full, "_blank");
+              }}
+            ></img>
+            <div className="card--user">
+              <img
+                className="card--user-image"
+                src={pic.user.profile_image.small}
+                alt={pic.user.name}
+              ></img>
+              <div className="card--user-details">
+                <span className="card--user-name"> {pic.user.name}</span>
+                <span className="card--likes"> Likes: {pic.likes}</span>
+              </div>
+            </div>
             <button onClick={() => savePhoto(pic)} className="save-button">
               Save
             </button>
