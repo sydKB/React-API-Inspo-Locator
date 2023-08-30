@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Outlet, Link } from "react-router-dom";
 
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../../utils/mutations';
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../../utils/mutations";
 
-import Auth from '../../utils/auth';
+import Auth from "../../utils/auth";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    email: "",
+    password: "",
   });
-  const [addUser, { error }] = useMutation(ADD_USER);
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -28,41 +28,69 @@ const Signup = () => {
     console.log(formState);
 
     try {
-      console.log(formState)
+      console.log(formState);
       const { data } = await addUser({
         variables: { ...formState },
       });
-    console.log(data)
+      console.log(data);
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
   };
 
-return (
+  return (
     <section>
-    <div className="signup">
-        <h2>Sign Up</h2>
-        <form class="form signup-form" onSubmit={handleFormSubmit}>
+      {data ? (
+        <p>
+          {" "}
+          Account was created successfully!
+          <Link to="/profile"></Link>
+        </p>
+      ) : (
+        <div className="signup">
+          <h2>Sign Up</h2>
+          <form class="form signup-form" onSubmit={handleFormSubmit}>
             <div>
-                <label for="name-signup">name:</label>
-                <input class="form-input" type="text" id="name-signup"  name="username"  onChange={handleChange} />
+              <label for="name-signup">name:</label>
+              <input
+                class="form-input"
+                type="text"
+                id="name-signup"
+                name="username"
+                onChange={handleChange}
+              />
             </div>
             <div>
-                <label for="email-signup">email:</label>
-                <input class="form-input" type="text" id="email-signup" name="email" onChange={handleChange}/>
+              <label for="email-signup">email:</label>
+              <input
+                class="form-input"
+                type="text"
+                id="email-signup"
+                name="email"
+                onChange={handleChange}
+              />
             </div>
             <div>
-                <label for="password-signup">password:</label>
-                <input class="form-input" type="password" id="password-signup" name="password" onChange={handleChange}/>
+              <label for="password-signup">password:</label>
+              <input
+                class="form-input"
+                type="password"
+                id="password-signup"
+                name="password"
+                onChange={handleChange}
+              />
             </div>
             <div>
-                    <button class="profile-btn" type="submit">Sign Up</button>
+              <button class="profile-btn" type="submit">
+                Sign Up
+              </button>
             </div>
-        </form>
-    </div>
+          </form>
+        </div>
+      )}
     </section>
-      );
-    };
+  );
+};
 
 export default Signup;
