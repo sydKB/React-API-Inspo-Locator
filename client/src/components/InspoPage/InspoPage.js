@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Unsplash, { toJson } from "unsplash-js";
+import { Link } from 'react-router-dom';
+import Auth from "../../utils/auth";
 import "./InspoPage.css";
 
 const unsplash = new Unsplash({
@@ -74,9 +76,15 @@ export default function InspoPage() {
                 <span className="card--likes"> Likes: {pic.likes}</span>
               </div>
             </div>
-            <button onClick={() => savePhoto(pic)} className="save-button">
-              Save
-            </button>
+            <div className="log-yn">
+              {Auth.loggedIn() ? (
+                <button onClick={() => savePhoto(pic)} className="save-button">
+                  Save
+                </button>
+                ) : (
+                <Link to="/login"><p className="must-log">Log in to save image!</p></Link>
+              )}
+            </div>
           </div>
         ))}
       </div>

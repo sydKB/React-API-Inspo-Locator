@@ -105,6 +105,36 @@
   flex-direction: column;
 }
 
+.log-yn {
+  display: grid;
+  place-items: center;
+}
+
+.save-button {
+  background-color: brown;
+  color: white;
+  padding: 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.save-button:hover {
+  background-color: red;
+}
+
+.must-log {
+  color: brown;
+  text-decoration: underline;
+  padding-top: 1rem;
+}
+
+.must-log:hover {
+  color: red;
+}
+
 @media (max-width: 768px) {
   .card-list {
       justify-content: flex-start; /* Stacking cards vertically */
