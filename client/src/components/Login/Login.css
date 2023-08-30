@@ -1,0 +1,30 @@
+.login {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 88vh;
+    background-image: url('https://images.unsplash.com/photo-1671750145942-da9fed292290?ixlib=rb-4.0.3&ixid=M3wxM[…]dlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 50px 0;
+}
+
+.login-form {
+    border-radius: 10px;
+    background-color: #333;
+    color: white;
+    opacity: 0.8;
+    width: 30vw;
+    height: 50vh;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    text-align: left;
+    font-size: 30px;
+
+}
+

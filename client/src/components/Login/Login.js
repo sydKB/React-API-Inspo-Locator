@@ -2,37 +2,31 @@ import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
-
 import Auth from "../../utils/auth";
+import './Login.css'
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
-
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
       [name]: value,
     });
   };
-
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
       const { data } = await login({
         variables: { ...formState },
       });
-
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
     }
-
     // clear form values
     setFormState({
       email: "",
@@ -42,7 +36,6 @@ const Login = (props) => {
   const handleLogout = () => {
     Auth.logout();
   };
-
   return (
     <section>
       <div className="login">
@@ -69,34 +62,29 @@ const Login = (props) => {
             />
           </div>
           <div>
-            <Link>
-              {Auth.loggedIn() ? (
-                 <button
-                 type="submit"
-                 class="profile-btn"
-                 onClick={handleLogout}
-               >
-                 Logout
-               </button>
-                
-              ) 
-              : (
-                <Link to="/signup">
-                  <button type="submit">Log In</button>,
-                  <button class="profile-btn" type="submit">
-                  Sign Up
+            {Auth.loggedIn() ? (
+              <button
+                type="submit"
+                className="profile-btn"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            ) : (
+              <div>
+                <button type="submit" className="profile-btn">
+                  Log In
                 </button>
+                <Link to="/signup">
+                  <button className="profile-btn">Sign Up</button>
                 </Link>
-              )
-              }
-            </Link>
-            <p class="log-again"> </p>
+              </div>
+            )}
+            <p className="log-again"> </p>
           </div>
         </form>
       </div>
-      <Outlet />
     </section>
   );
 };
-
 export default Login;
