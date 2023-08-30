@@ -9,7 +9,7 @@ function Profile() {
             <div className="userImages">
                 <h3>Here are your saved inspo pics!</h3>
                 <ul>
-                    <li>image 1</li>
+                    <li><img></img></li>
                     <li>image 2</li>
                     <li>image 3</li>
                 </ul>
