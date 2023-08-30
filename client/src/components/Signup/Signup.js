@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
-
 import Auth from "../../utils/auth";
-import './Signup.css';
+import './Signup.css'
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -14,20 +12,16 @@ const Signup = () => {
     password: "",
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
-
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
       [name]: value,
     });
   };
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-
     try {
       console.log(formState);
       const { data } = await addUser({
@@ -39,7 +33,6 @@ const Signup = () => {
       console.error(e);
     }
   };
-
   return (
     <section>
       {data ? (
@@ -50,8 +43,8 @@ const Signup = () => {
         </p>
       ) : (
         <div className="signup">
+          <h2>Sign Up</h2>
           <form class="form signup-form" onSubmit={handleFormSubmit}>
-            <h2>Sign Up</h2>
             <div>
               <label for="name-signup">name:</label>
               <input
@@ -93,5 +86,4 @@ const Signup = () => {
     </section>
   );
 };
-
 export default Signup;
