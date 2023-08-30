@@ -1,4 +1,13 @@
-function Profile({ savedPhotos }) {
+import React, { useState, useEffect } from "react";
+import "./Profile.css"
+
+function Profile() {
+    const [savedPhotos, setSavedPhotos] = useState([]);
+    console.log("Profile savedPhotos:", savedPhotos)
+    useEffect(() => {
+        const savedPhotosFromStorage = JSON.parse(localStorage.getItem("savedPhotos")) || [];
+        setSavedPhotos(savedPhotosFromStorage);
+      }, []);
     return(
         <section>
             <div className="userInfo">
@@ -12,7 +21,7 @@ function Profile({ savedPhotos }) {
                  src={photo.urls.small}
                  alt={photo.alt_description}
              />
-))}
+            ))}
             </div>
         </section>
     );
