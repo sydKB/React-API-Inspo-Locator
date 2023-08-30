@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./MapsPage.css"
 const MapPage = () => {
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [selectedPlaceDetails, setSelectedPlaceDetails] = useState(null);
@@ -100,7 +101,6 @@ const MapPage = () => {
       return content;
     };
     const script = document.createElement("script");
-    
     script.src =
       `https://maps.googleapis.com/maps/api/js?key=AIzaSyB38WmtDlBaJaUQW_58HhlzjElo6KDt30o&libraries=places&callback=initMap`;
     script.async = true;
@@ -111,14 +111,16 @@ const MapPage = () => {
   }, []);
   return (
     <section>
-      <div>
+      <div className="map">
+        <div className="map-container">
         <input
           id="search-box"
           type="text"
           placeholder="Search For City"
           style={{ width: "300px", marginTop: "10px", marginLeft: "10px" }}
         />
-        <div id="map" style={{ width: "100%", height: "400px" }}></div>
+        <div id="map" style={{ width: "100%", height: "600px" }}></div>
+      </div>
       </div>
     </section>
   );

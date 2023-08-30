@@ -1,7 +1,29 @@
+.tips-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  background-image: url('https://img.freepik.com/free-vector/vintage-monochrome-tattoos-seamless-pattern_225004-1538.jpg');
+  background-position: center;
+
+  padding: 50px 0;
+}
+
+.tips {
+  padding: 30px 60px;
+    border-radius: 10px;
+    background-color: rgb(215, 215, 207);
+    width: 80vw;
+    text-align: left;
+}
+.tips-text {
+  text-align: left;
+} 
+
 .tips ul {
-  text-align: center;
+  text-align: left;
   list-style: none;
-  padding: 0;
+  
 }
 
 .tips ul li {
@@ -11,11 +33,12 @@
 
 
 .tips p {
-  width: 75%;
+  width: 90%;
   margin: 0 auto; 
   line-height: 2; 
   font-size: 23px; 
   padding-bottom: 40px;
+  text-align: left;
 }
 
 
@@ -32,15 +55,16 @@
 
 .tips > * {
   margin-bottom: 20px;
-  color: white;
+  color: black;
 }
 
-.tips {
+/* .tips {
   margin-bottom: 70px; 
   background-image: url('https://images.unsplash.com/photo-1543132384-23765008467c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
   background-size: cover;
   background-position: center;
-}
+} */
+
 
 .footer {
   position: fixed;

@@ -1,0 +1,27 @@
+.map {
+
+    background-image: url('https://s3-media0.fl.yelpcdn.com/bphoto/z-__0iRuhuZNzvTNozXHSg/1000s.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    height: 89vh;
+    padding-top: 90px;
+}
+.map-container {
+width: 70%;
+margin: 0 auto;
+border-radius: 10px;
+overflow: hidden;
+position: relative;
+}
+
+#search-box {
+width: 100%;
+padding: 10px;
+margin-bottom: 10px;
+border: none;
+border-radius: 5px;
+font-size: 16px;
+}
