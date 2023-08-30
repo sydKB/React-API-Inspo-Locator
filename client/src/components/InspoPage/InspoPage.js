@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Unsplash, { toJson } from "unsplash-js";
 import "./InspoPage.css";
+
 const unsplash = new Unsplash({
   accessKey: "6oz3qu2mhIv2G9RzuK4p8szkUVdc4G_pdTk9p6EZuBo",
 });
+
 export default function InspoPage() {
   const [query, setQuery] = useState("");
   const [pics, setPics] = useState([]);
   const [savedPhotos, setSavedPhotos] = useState([]);
+
   const searchPhotos = async (e) => {
     e.preventDefault();
     unsplash.search
@@ -19,24 +22,26 @@ export default function InspoPage() {
       });
     console.log("Submitting the Form");
   };
+
   const savePhoto = (photo) => {
     console.log("Saving photo:", photo);
-    setSavedPhotos([...savedPhotos, photo]);
+    const updatedPhotos = [...savedPhotos, photo];
+    setSavedPhotos(updatedPhotos);
+    localStorage.setItem("savedPhotos", JSON.stringify(updatedPhotos));
   };
+
   useEffect(() => {
-    console.log("Saved photos:", savedPhotos);
-  }, [savedPhotos]);
+    const savedPhotosFromStorage = JSON.parse(localStorage.getItem("savedPhotos")) || [];
+    setSavedPhotos(savedPhotosFromStorage);
+  }, []);
   return (
     <div className="back">
       <form className="form" onSubmit={searchPhotos}>
-        <label className="label" htmlFor="query">
-          {" "}
-        </label>
         <input
           type="text"
           name="query"
           className="input"
-          placeholder={`Search for inspiration"`}
+          placeholder="Search for inspiration"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -51,26 +56,11 @@ export default function InspoPage() {
               className="card--image"
               alt={pic.alt_description}
               src={pic.urls.full}
-              width="50%"
-              height="50%"
-              onClick={() => {
-                window.open(pic.urls.full, "_blank");
-              }}
-            ></img>
+              onClick={() => window.open(pic.urls.full, "_blank")}
+            />
             <button onClick={() => savePhoto(pic)} className="save-button">
               Save
             </button>
-            <div className="card--user">
-              <img
-                className="card--user-image"
-                src={pic.user.profile_image.small}
-                alt={pic.user.name}
-              ></img>
-              <div className="card--user-details">
-                <span className="card--user-name"> {pic.user.name}</span>
-                <span className="card--likes"> Likes: {pic.likes}</span>
-              </div>
-            </div>
           </div>
         ))}
       </div>

@@ -1,0 +1,20 @@
+.userInfo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .userImages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .userImages h3 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .userImages img {
+    max-width: 200px;
+    margin: 10px;
+  }
