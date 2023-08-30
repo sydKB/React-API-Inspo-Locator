@@ -1,6 +1,4 @@
-import React from 'react';
-
-function Profile() {
+function Profile({ savedPhotos }) {
     return(
         <section>
             <div className="userInfo">
@@ -8,14 +6,15 @@ function Profile() {
             </div>
             <div className="userImages">
                 <h3>Here are your saved inspo pics!</h3>
-                <ul>
-                    <li>image 1</li>
-                    <li>image 2</li>
-                    <li>image 3</li>
-                </ul>
+                {savedPhotos.map((photo) => (
+            <img
+                 key={photo.id}
+                 src={photo.urls.small}
+                 alt={photo.alt_description}
+             />
+))}
             </div>
         </section>
     );
 }
-
 export default Profile;

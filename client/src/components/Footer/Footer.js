@@ -6,7 +6,7 @@ function Footer() {
     return(    
         <footer className='footer'>
             <div className='tattoo-tips'>
-                <Link to="/tips"> Tatoo Tips! </Link>
+                <Link to="/tips"> Tattoo Tips! </Link>
             </div>
             <Outlet />
         </footer>
