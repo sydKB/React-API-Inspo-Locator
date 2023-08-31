@@ -21,12 +21,12 @@ function Profile() {
 
     const renderSaved = () => {
         return savedPhotos.map((photo) => (
-            <div className="card">
+            <div className="saved-card">
                 <img
                     key={photo.id}
                     src={photo.urls.small}
                     alt={photo.alt_description}
-                    className="card--image"
+                    className="saved-image"
                 />
                 <button className="delete-button" onClick={() => deleteById(photo.id)}>
                     Delete
@@ -35,17 +35,19 @@ function Profile() {
     ))}
 
     return(
-        <section>
-            <div className="userInfo">
+        <section className="profile">
+            <div className="user-info">
                 <h2>Welcome, user!</h2>
             </div>
-            <div className="userImages">
+            <div className="user-saved">
                 <h3>Here are your saved inspo pics!</h3>
-                {Auth.loggedIn() ? (
-                    renderSaved()
-                ) : (
-                    <Link to="/login"><p className="must-log">Log in to see them!</p></Link>
-                )}
+                <div className="saved-list">
+                    {Auth.loggedIn() ? (
+                        renderSaved()
+                    ) : (
+                        <Link to="/login"><p className="must-log">Log in to see them!</p></Link>
+                    )}
+                </div>
             </div>
         </section>
     );
