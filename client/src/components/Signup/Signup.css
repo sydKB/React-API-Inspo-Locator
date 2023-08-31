@@ -28,7 +28,7 @@ h2 {
 
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1700px) {
     h2 {
         color: white;
     }
