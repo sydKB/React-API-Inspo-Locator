@@ -13,20 +13,22 @@ function Profile() {
       }, []);
 
     const deleteById = (id) => {
-        const updatedPhotos = savedPhotos.filter((photo) => photo.id !== id);
+        const deleteIndex = savedPhotos.findIndex(photo => photo.id === id); 
+        const updatedPhotos = savedPhotos.filter((_, index) => index !== deleteIndex);
         setSavedPhotos(updatedPhotos);
         localStorage.setItem('savedPhotos', JSON.stringify(updatedPhotos));
     };
 
     const renderSaved = () => {
         return savedPhotos.map((photo) => (
-            <div>
+            <div className="card">
                 <img
                     key={photo.id}
                     src={photo.urls.small}
                     alt={photo.alt_description}
+                    className="card--image"
                 />
-                <button className="del-button" onClick={() => deleteById(photo.id)}>
+                <button className="delete-button" onClick={() => deleteById(photo.id)}>
                     Delete
                 </button>
             </div>

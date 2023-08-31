@@ -1,20 +1,49 @@
 .userInfo {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .userImages {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .userImages h3 {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .userImages img {
-    max-width: 200px;
-    margin: 10px;
-  }
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.userImages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.userImages h3 {
+  width: 100%;
+  text-align: center;
+}
+
+.userImages img {
+  max-width: 200px;
+  margin: 10px;
+}
+
+.card {
+  width: 20%;
+  margin: 5px;
+  background-color: lightgrey;
+  border-radius: 20px;
+}
+
+.card--image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+}
+
+.delete-button {
+  background-color: brown;
+  color: white;
+  padding: 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.delete-button:hover {
+  background-color: red;
+}
