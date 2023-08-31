@@ -1,32 +1,43 @@
-.userInfo {
+
+.profile {
+  display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 88vh;
+    background-image: url('https://i.pinimg.com/originals/58/c3/35/58c335a924903d01afb15526e8fbe24f.jpg');
+    color: white;
+}
+
+.user-info {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.userImages {
+.user-images {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.userImages h3 {
+.user-images h3 {
   width: 100%;
   text-align: center;
 }
 
-.userImages img {
+.user-images img {
   max-width: 200px;
   margin: 10px;
 }
 
-.card {
+.saved-card {
   width: 20%;
   margin: 5px;
   background-color: lightgrey;
   border-radius: 20px;
 }
 
-.card--image {
+.saved-image {
   width: 100%;
   height: auto;
   display: block;
@@ -47,3 +58,15 @@
 .delete-button:hover {
   background-color: red;
 }
+
+/* @media (max-width: 800px) {
+  .saved-list {
+      justify-content: center; 
+  }
+
+  .card {
+      flex-basis: 50%;
+  }
+} */
+
+    

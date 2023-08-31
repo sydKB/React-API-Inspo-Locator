@@ -25,7 +25,6 @@
 h2 {
     text-align: left;
     font-size: 30px;
-
 }
 
 @media (max-width: 968px) {
@@ -33,4 +32,8 @@ h2 {
         width: 50vw;
     }  
 }
-
+@media (max-width: 1250px) {
+    h2 {
+        color: white;
+    }
+}
