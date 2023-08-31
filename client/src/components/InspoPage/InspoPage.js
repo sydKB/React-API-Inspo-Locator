@@ -12,6 +12,7 @@ export default function InspoPage() {
   const [query, setQuery] = useState("");
   const [pics, setPics] = useState([]);
   const [savedPhotos, setSavedPhotos] = useState([]);
+  const [savedPhotoId, setSavedPhotoId] = useState(null);
 
   const searchPhotos = async (e) => {
     e.preventDefault();
@@ -27,10 +28,10 @@ export default function InspoPage() {
 
   const savePhoto = (photo) => {
     console.log("Saving photo:", photo);
-    const updatedPhotos = [...savedPhotos, photo];
+    const updatedPhotos = [...savedPhotos, { ...photo, isSaved: true }];
     setSavedPhotos(updatedPhotos);
+    setSavedPhotoId(photo.id);
     localStorage.setItem("savedPhotos", JSON.stringify(updatedPhotos));
-    window.alert('Success! Image saved to your profile.')
   };
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function InspoPage() {
       JSON.parse(localStorage.getItem("savedPhotos")) || [];
     setSavedPhotos(savedPhotosFromStorage);
   }, []);
+
   return (
     <div className="back">
       <form className="form" onSubmit={searchPhotos}>
@@ -79,9 +81,19 @@ export default function InspoPage() {
             </div>
             <div className="log-yn">
               {Auth.loggedIn() ? (
-                <button onClick={() => savePhoto(pic)} className="save-button">
-                  Save
-                </button>
+                <div className="saved">
+                  <button onClick={()=> savePhoto(pic)} className="save-button">
+                    Save
+                  </button>
+                  {savedPhotoId === pic.id &&
+                    <div>
+                      <p className="save-text">Inspo saved!</p> 
+                      <Link to="/profile">
+                        <button className="see-pic">See it in your profile!</button>
+                      </Link>
+                    </div>
+                  }
+                </div>
                 ) : (
                 <Link to="/login"><p className="must-log">Log in to save image!</p></Link>
               )}

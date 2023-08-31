@@ -23,6 +23,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 10px;
+  padding-bottom: 100px;
 }
 
 .user-info h2 {
