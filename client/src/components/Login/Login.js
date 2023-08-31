@@ -65,8 +65,7 @@ const Login = (props) => {
               <button
                 type="submit"
                 className="profile-btn"
-                onClick={handleLogout}
-              >
+                onClick={handleLogout}>
                 Logout
               </button>
             ) : (
