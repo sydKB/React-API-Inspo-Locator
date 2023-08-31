@@ -39,15 +39,13 @@ function Profile() {
             <div className="user-info">
                 <h2>Welcome, user!</h2>
             </div>
-            <div className="user-saved">
+            <div className="saved-list">
                 <h3>Here are your saved inspo pics!</h3>
-                <div className="saved-list">
                     {Auth.loggedIn() ? (
                         renderSaved()
                     ) : (
                         <Link to="/login"><p className="must-log">Log in to see them!</p></Link>
                     )}
-                </div>
             </div>
         </section>
     );
