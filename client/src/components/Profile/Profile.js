@@ -38,13 +38,16 @@ function Profile() {
         <section className="profile">
             <div className="user-info">
                 <h2>Welcome, user!</h2>
+                <h3>Here are your saved inspo pics!</h3>
             </div>
             <div className="saved-list">
-                <h3>Here are your saved inspo pics!</h3>
                     {Auth.loggedIn() ? (
                         renderSaved()
                     ) : (
-                        <Link to="/login"><p className="must-log">Log in to see them!</p></Link>
+                        <div className="go-log">
+                            <Link to="/login"><p>Log in to see them!</p></Link>
+                        </div>
+                        
                     )}
             </div>
         </section>
