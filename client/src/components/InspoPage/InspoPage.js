@@ -87,10 +87,7 @@ export default function InspoPage() {
                   </button>
                   {savedPhotoId === pic.id &&
                     <div>
-                      <p className="save-text">Inspo saved!</p> 
-                      <Link to="/profile">
-                        <button className="see-pic">See it in your profile!</button>
-                      </Link>
+                      <p className="save-text">Inspo saved!</p>
                     </div>
                   }
                 </div>
