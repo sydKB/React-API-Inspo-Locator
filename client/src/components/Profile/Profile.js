@@ -12,13 +12,25 @@ function Profile() {
         setSavedPhotos(savedPhotosFromStorage);
       }, []);
 
+    
+    const deleteById = (id) => {
+        setSavedPhotos((oldValues) => {
+          return oldValues.filter((photo) => photo.id !== id);
+        });
+      };
     const renderSaved = () => {
         return savedPhotos.map((photo) => (
-            <img
-                key={photo.id}
-                src={photo.urls.small}
-                alt={photo.alt_description}
-            />
+            <div>
+                <img
+                    key={photo.id}
+                    src={photo.urls.small}
+                    alt={photo.alt_description}
+                />
+                <button className="del-button" onClick={() => deleteById(photo.id)}>
+                    Delete
+                </button>
+            </div>
+            
     ))}
 
     return(
