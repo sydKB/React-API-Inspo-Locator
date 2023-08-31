@@ -6,6 +6,8 @@ import Auth from "../../utils/auth";
 import './Signup.css'
 
 const Signup = () => {
+  const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+  const [validateEl, setValidateEl] = useState(false)
   const [formState, setFormState] = useState({
     username: "",
     email: "",
@@ -20,8 +22,17 @@ const Signup = () => {
     });
   };
   const handleFormSubmit = async (event) => {
+   
     event.preventDefault();
-    console.log(formState);
+    if (!isValidEmail.test(formState.email)) {
+      setValidateEl(true);
+      return;
+    }
+    if (formState.password.length < 8) {
+      setValidateEl(true);
+      return;
+    }
+    setValidateEl(false);
     try {
       console.log(formState);
       const { data } = await addUser({
@@ -64,7 +75,13 @@ const Signup = () => {
                 name="email"
                 onChange={handleChange}
               />
+           
             </div>
+            {validateEl && (
+          <div>
+            must be a valid email
+          </div>
+        )} 
             <div>
               <label for="password-signup">password:</label>
               <input
@@ -75,6 +92,11 @@ const Signup = () => {
                 onChange={handleChange}
               />
             </div>
+            {validateEl && (
+              <div className="error-message">
+                {formState.password.length < 8 && "Password must be at least 8 characters"}
+              </div>
+            )}
             <div>
               <button class="profile-btn" type="submit">
                 Sign Up
@@ -83,7 +105,9 @@ const Signup = () => {
           </form>
         </div>
       )}
+        
     </section>
+
   );
 };
 export default Signup;
