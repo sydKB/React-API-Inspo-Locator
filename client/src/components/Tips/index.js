@@ -1,0 +1,9 @@
+export { default as trad } from './trad.jpg';
+export { default as mix } from './mix.jpg';
+export { default as bio } from './bio.jpg';
+export { default as hand } from './hand.jpg';
+export { default as japanese } from './japanese.jpg';
+export { default as neotrad } from './neotrad.jpg';
+export { default as newschool } from './newschool.jpg';
+export { default as other } from './other.jpg';
+export { default as tribal } from './tribal.jpg';
