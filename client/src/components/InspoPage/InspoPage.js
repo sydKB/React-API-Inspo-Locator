@@ -30,6 +30,7 @@ export default function InspoPage() {
     const updatedPhotos = [...savedPhotos, photo];
     setSavedPhotos(updatedPhotos);
     localStorage.setItem("savedPhotos", JSON.stringify(updatedPhotos));
+    window.alert('Success! Image saved to your profile.')
   };
 
   useEffect(() => {
