@@ -12,12 +12,12 @@ function Profile() {
         setSavedPhotos(savedPhotosFromStorage);
       }, []);
 
-    
     const deleteById = (id) => {
-        setSavedPhotos((oldValues) => {
-          return oldValues.filter((photo) => photo.id !== id);
-        });
-      };
+        const updatedPhotos = savedPhotos.filter((photo) => photo.id !== id);
+        setSavedPhotos(updatedPhotos);
+        localStorage.setItem('savedPhotos', JSON.stringify(updatedPhotos));
+    };
+
     const renderSaved = () => {
         return savedPhotos.map((photo) => (
             <div>
@@ -30,7 +30,6 @@ function Profile() {
                     Delete
                 </button>
             </div>
-            
     ))}
 
     return(
