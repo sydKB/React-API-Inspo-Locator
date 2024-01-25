@@ -4,7 +4,6 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import './Login.css'
-
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
@@ -66,8 +65,7 @@ const Login = (props) => {
               <button
                 type="submit"
                 className="profile-btn"
-                onClick={handleLogout}
-              >
+                onClick={handleLogout}>
                 Logout
               </button>
             ) : (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import Auth from "../../utils/auth";
 import "./Header.css"
 
 function Header() {
@@ -14,11 +15,21 @@ function Header() {
                     <Link to="/search"> Search </Link>
                     <Link to="/map"> Maps </Link>
                     <Link to="/profile"> Profile </Link>
-                    <Link to="/login"> 
-                        <button className="login-button">
+                    {Auth.loggedIn() ? (
+                        <Link to="/login">
+                            <button
+                            className="logout-btn"
+                            onClick={Auth.logout}>
+                            Log out
+                            </button>
+                        </Link>
+                        ) : (
+                        <Link to="/login">
+                            <button className="login-button">
                             Login
-                        </button>
-                    </Link>
+                            </button>
+                        </Link>
+                    )}
                 </nav>
             </div>
             <Outlet />

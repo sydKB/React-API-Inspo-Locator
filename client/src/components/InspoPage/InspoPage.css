@@ -10,7 +10,7 @@
   background-position: top;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  height: 88vh;
+  height: 90vh;
   padding-bottom: 200px;
 }
 
@@ -68,13 +68,13 @@
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 10px;
-
-  /* background-image: url('https://m.media-amazon.com/images/I/91fm+hvqX1L.jpg'); */
+  padding-bottom: 100px;
   background-image: url('https://images.unsplash.com/photo-1543132384-23765008467c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
   background-size: cover;
   background-position: top;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  padding-bottom: 100px;
 }
 
 .card {
@@ -105,9 +105,62 @@
   flex-direction: column;
 }
 
-@media (max-width: 768px) {
+.saved {
+  width:40%;
+  text-align: center;
+}
+
+.log-yn {
+  display: grid;
+  place-items: center;
+}
+
+.save-button {
+  background-color: brown;
+  color: white;
+  padding: 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0;
+  margin-bottom: 10px;
+  width:100% 
+}
+
+.save-button:hover {
+  background-color: red;
+}
+
+.save-text {
+  color: brown;
+}
+
+.see-pic {
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  padding: 5px;
+}
+
+.see-pic:hover {
+  background-color: #333;
+  color: white;
+  padding: 6px;
+}
+
+.must-log {
+  color: brown;
+  text-decoration: underline;
+  padding-top: 1rem;
+}
+
+.must-log:hover {
+  color: red;
+}
+
+@media (max-width: 800px) {
   .card-list {
-      justify-content: flex-start; /* Stacking cards vertically */
+      justify-content: center; /* Stacking cards vertically */
   }
 
   .card {

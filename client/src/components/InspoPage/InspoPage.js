@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Unsplash, { toJson } from "unsplash-js";
+import { Link } from 'react-router-dom';
+import Auth from "../../utils/auth";
 import "./InspoPage.css";
 
 const unsplash = new Unsplash({
@@ -10,6 +12,7 @@ export default function InspoPage() {
   const [query, setQuery] = useState("");
   const [pics, setPics] = useState([]);
   const [savedPhotos, setSavedPhotos] = useState([]);
+  const [savedPhotoId, setSavedPhotoId] = useState(null);
 
   const searchPhotos = async (e) => {
     e.preventDefault();
@@ -25,8 +28,9 @@ export default function InspoPage() {
 
   const savePhoto = (photo) => {
     console.log("Saving photo:", photo);
-    const updatedPhotos = [...savedPhotos, photo];
+    const updatedPhotos = [...savedPhotos, { ...photo, isSaved: true }];
     setSavedPhotos(updatedPhotos);
+    setSavedPhotoId(photo.id);
     localStorage.setItem("savedPhotos", JSON.stringify(updatedPhotos));
   };
 
@@ -35,6 +39,7 @@ export default function InspoPage() {
       JSON.parse(localStorage.getItem("savedPhotos")) || [];
     setSavedPhotos(savedPhotosFromStorage);
   }, []);
+
   return (
     <div className="back">
       <form className="form" onSubmit={searchPhotos}>
@@ -74,9 +79,22 @@ export default function InspoPage() {
                 <span className="card--likes"> Likes: {pic.likes}</span>
               </div>
             </div>
-            <button onClick={() => savePhoto(pic)} className="save-button">
-              Save
-            </button>
+            <div className="log-yn">
+              {Auth.loggedIn() ? (
+                <div className="saved">
+                  <button onClick={()=> savePhoto(pic)} className="save-button">
+                    Save
+                  </button>
+                  {savedPhotoId === pic.id &&
+                    <div>
+                      <p className="save-text">Inspo saved!</p>
+                    </div>
+                  }
+                </div>
+                ) : (
+                <Link to="/login"><p className="must-log">Log in to save image!</p></Link>
+              )}
+            </div>
           </div>
         ))}
       </div>
